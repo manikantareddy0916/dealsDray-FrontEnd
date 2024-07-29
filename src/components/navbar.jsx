@@ -17,7 +17,7 @@ export default function Navbar1({ isAuthenticated, setIsAuthenticated }) {
   };
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" className="px-3">
+    <Navbar bg="dark" variant="dark" >
       <Navbar.Brand style={{ fontSize: '24px' }}>
         {/* Brand Logo or Name */}
         Logo

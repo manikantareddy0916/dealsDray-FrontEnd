@@ -75,12 +75,13 @@ export const startUpdateEmployee = (id, formData, setServerErrors, setToggle) =>
       setToggle(false);
       setServerErrors([]);
     } catch (error) {
-      // Handle server errors
-      if (error.response && error.response.data.errors) {
-        setServerErrors(error.response.data.errors);
-      } else {
-        setServerErrors([{ msg: "Failed to update employee" }]);
-      }
+      console.log('e in updateAction',e)
+      // // Handle server errors
+      // if (error.response && error.response.data.errors) {
+      //   setServerErrors(error.response.data.errors);
+      // } else {
+      //   setServerErrors([{ msg: "Failed to update employee" }]);
+      // }
     }
   };
 };

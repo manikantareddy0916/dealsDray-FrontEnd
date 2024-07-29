@@ -26,7 +26,7 @@ function App() {
      
     }
   
-  }, []);
+  }, [isAuthenticated]);
 
   return (
     <BrowserRouter>

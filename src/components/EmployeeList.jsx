@@ -111,6 +111,7 @@ console.log('vtypev',type)
 
   // Toggle between form and table view
   const handleToggle = () => {
+    
     setToggle(!toggle);
     setEditEmpId(null); // Reset edit ID when closing form
     setClientErrors({}); // Clear client errors when toggling
@@ -213,21 +214,38 @@ console.log('vtypev',type)
           </Col>
         </Row>
         
-        <div className="mb-3">
-        <Dropdown className="me-2">
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            {filter}
-          </Dropdown.Toggle>
+      {!toggle &&
 
-          <Dropdown.Menu>
-            <Dropdown.Item onClick={() => dropDownChange('Name')}>Name</Dropdown.Item>
-            <Dropdown.Item onClick={() => dropDownChange('Id')}>ID</Dropdown.Item>
-            <Dropdown.Item onClick={() => dropDownChange('Email')}>Email</Dropdown.Item>
-            <Dropdown.Item onClick={() => dropDownChange('Date')}>Date</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </div>
+      <>
+       <div className="mb-3">
+      <Dropdown className="me-2">
+        <Dropdown.Toggle variant="success" id="dropdown-basic">
+          {filter}
+        </Dropdown.Toggle>
 
+        <Dropdown.Menu>
+          <Dropdown.Item onClick={() => dropDownChange('Name')}>Name</Dropdown.Item>
+          <Dropdown.Item onClick={() => dropDownChange('Id')}>ID</Dropdown.Item>
+          <Dropdown.Item onClick={() => dropDownChange('Email')}>Email</Dropdown.Item>
+          <Dropdown.Item onClick={() => dropDownChange('Date')}>Date</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+    </div>
+      <div className="mb-3">
+          {type == 'search' ?
+          <>
+          <Button onClick={()=>{setType('list')}}>close search</Button> 
+          <input  placeholder="search name"  
+          onChange={(e)=>{setSearch(e.target.value)}} value={search}/>
+          </>
+          : <Button onClick={searchClick}>Search</Button>
+        }
+        </div>
+      </>
+      
+    
+    }
+   
         
         {toggle && (
           <Container>
@@ -428,22 +446,13 @@ console.log('vtypev',type)
             </Form>
           </Container> ) }
 
-          <div className="mb-3">
-          {type == 'search' ?
-          <>
-          <Button onClick={()=>{setType('list')}}>close search</Button> 
-          <input  placeholder="search name"  
-          onChange={(e)=>{setSearch(e.target.value)}} value={search}/>
-          </>
-          : <Button onClick={searchClick}>Search</Button>
-        }
-          </div>
+         
+
+
         {(type == 'list' && !toggle)  &&
 
          (
-          <>
-         
-           
+          <>   
           {/* <h2>search</h2><input placeholder="search name" onClick={datt}/> */}
           
             <Table striped bordered hover>
